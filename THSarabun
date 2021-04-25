@@ -1,0 +1,27 @@
+1. Pre-requisite
+- you should have xampp run in your system
+- download tcpdf and put the folder in htdocs under your project folder
+- upload Thai fonts i.e. TH Sarabun.ttf or other Thai..ttf under font folder in tcpdf folder
+  in my case my tcpdf folder is pdfReport. Copy .ttf into /pdfReport/fonts
+
+2. Converting to tcpdf format
+- create convertfont.php using VS Studio or Notepad++
+- Need to create font for THSarabun.ttf
+- Write these codes:
+<?php
+    include('../tcpdf.php');
+    $pdf = new TCPDF_FONTS('P', 'mm', 'A4', true, 'UTF-8', false);
+    $pdf->addTTFfont('./THSarabun.ttf', 'TrueTypeUnicode');
+    echo "font conversion success***";
+?>
+- run convertfont.php in the browser
+- in mycase at the chrome browser
+http://localhost/pdfReport/fonts/convertfont.php
+- check whether ok at the fonts folder: new file will be created i.e. thsarabuni.z, thsarabun.php, thsarabun.ctg.z
+- if you need more fonts, do the same but change the font name in php file above.
+
+3. To use in tcpdf
+- open file tcpdf_config_alt.php
+- replace font name at your wish.
+
+Done.
